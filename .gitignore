@@ -1,0 +1,15 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Node dependencies and build files
+node_modules/
+dist/
+.env*
+
+# SDKs and binaries
+gcloud_sdk/
+google-cloud-cli.zip
