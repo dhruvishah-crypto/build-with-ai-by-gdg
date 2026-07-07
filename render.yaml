@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: aayush-health-platform
+    env: docker
+    dockerContext: .
+    dockerfilePath: backend/Dockerfile
+    plan: free # Deploys on Render's free tier
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false # User will configure this in Render dashboard
+      - key: GOOGLE_CREDENTIALS_JSON
+        sync: false # User will configure their GCP Service Account JSON in Render dashboard
+      - key: FIREBASE_PROJECT_ID
+        sync: false # User will configure their Firebase/GCP Project ID in Render dashboard

@@ -1,0 +1,13 @@
+steps:
+  # Build the container image using the root directory as context and backend/Dockerfile
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [
+      'build',
+      '-t', 'gcr.io/$PROJECT_ID/aayush-app',
+      '-f', 'backend/Dockerfile',
+      '.'
+    ]
+
+# Push the built image to Container Registry
+images:
+  - 'gcr.io/$PROJECT_ID/aayush-app'

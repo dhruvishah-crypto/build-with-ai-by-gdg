@@ -50,7 +50,7 @@ class TransferRequest(BaseModel):
     quantity: int
 
 # Endpoints
-@app.get("/")
+@app.get("/api/health")
 def read_root():
     return {"status": "healthy", "service": "Smart Health Platform API"}
 
@@ -310,3 +310,12 @@ def get_joined_analytics():
     except Exception as e:
         logger.error(f"Error compiling demographics analytics: {e}")
         raise HTTPException(status_code=500, detail=str(e))
+
+# Serve static frontend files
+import os
+from fastapi.staticfiles import StaticFiles
+
+static_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "static")
+if os.path.exists(static_path):
+    app.mount("/", StaticFiles(directory=static_path, html=True), name="static")
+    logger.info(f"Mounted static files from {static_path}")

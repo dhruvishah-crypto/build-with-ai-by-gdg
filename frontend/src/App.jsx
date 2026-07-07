@@ -9,7 +9,7 @@ import {
   Tooltip, Legend, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, LineChart, Line
 } from 'recharts';
 
-const API_BASE = 'http://localhost:8000';
+const API_BASE = window.location.hostname === 'localhost' && window.location.port === '5173' ? 'http://localhost:8000' : '';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('admin'); // 'admin' or 'staff'
@@ -57,7 +57,7 @@ export default function App() {
     setLoading(true);
     try {
       // Test Backend Connection
-      const healthRes = await fetch(`${API_BASE}/`);
+      const healthRes = await fetch(`${API_BASE}/api/health`);
       if (healthRes.ok) {
         setBackendStatus('online');
         

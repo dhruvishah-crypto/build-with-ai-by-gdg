@@ -8,12 +8,23 @@ logger = logging.getLogger("audio_service")
 speech_client = None
 translate_client = None
 
-if os.environ.get("GOOGLE_APPLICATION_CREDENTIALS"):
+google_creds = os.environ.get("GOOGLE_APPLICATION_CREDENTIALS")
+google_creds_json = os.environ.get("GOOGLE_CREDENTIALS_JSON")
+
+if google_creds or google_creds_json:
     try:
         from google.cloud import speech
         from google.cloud import translate_v2 as translate
-        speech_client = speech.SpeechClient()
-        translate_client = translate.Client()
+        from google.oauth2 import service_account
+        
+        creds = None
+        if google_creds_json:
+            import json
+            creds_dict = json.loads(google_creds_json)
+            creds = service_account.Credentials.from_service_account_info(creds_dict)
+            
+        speech_client = speech.SpeechClient(credentials=creds)
+        translate_client = translate.Client(credentials=creds)
         logger.info("Initialized Google Cloud Speech and Translation clients.")
     except Exception as e:
         logger.warning(f"Could not initialize GCP Speech/Translate clients: {e}. Falling back to simulation.")

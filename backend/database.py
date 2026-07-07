@@ -8,6 +8,7 @@ logger = logging.getLogger("database")
 
 # Check for GCP credentials or Firebase Project ID
 GOOGLE_CREDENTIALS = os.environ.get("GOOGLE_APPLICATION_CREDENTIALS")
+GOOGLE_CREDENTIALS_JSON = os.environ.get("GOOGLE_CREDENTIALS_JSON")
 FIREBASE_PROJECT_ID = os.environ.get("FIREBASE_PROJECT_ID")
 
 class MockDocument:
@@ -114,10 +115,21 @@ class MockFirestoreClient:
 db = None
 is_mock = True
 
-if GOOGLE_CREDENTIALS or FIREBASE_PROJECT_ID:
+if GOOGLE_CREDENTIALS or GOOGLE_CREDENTIALS_JSON or FIREBASE_PROJECT_ID:
     try:
         from google.cloud import firestore
-        db = firestore.Client()
+        
+        if GOOGLE_CREDENTIALS_JSON:
+            logger.info("Initializing Firestore using GOOGLE_CREDENTIALS_JSON env var.")
+            creds_dict = json.loads(GOOGLE_CREDENTIALS_JSON)
+            from google.oauth2 import service_account
+            creds = service_account.Credentials.from_service_account_info(creds_dict)
+            project_id = creds_dict.get("project_id") or FIREBASE_PROJECT_ID
+            db = firestore.Client(credentials=creds, project=project_id)
+        else:
+            logger.info("Initializing Firestore using default credentials or FIREBASE_PROJECT_ID.")
+            db = firestore.Client()
+            
         is_mock = False
         logger.info("Successfully initialized Google Cloud Firestore Client.")
     except Exception as e:
