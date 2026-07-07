@@ -1,0 +1,15 @@
+{
+  "name": "aayush-smart-district-optimizer",
+  "version": "1.0.0",
+  "description": "Smart Health District Resource Optimization Platform - Hackathon Track 3",
+  "scripts": {
+    "install:all": "npm install --prefix frontend --legacy-peer-deps && pip install -r backend/requirements.txt",
+    "seed": "python backend/init_db.py",
+    "dev:backend": "uvicorn backend.main:app --reload --port 8000",
+    "dev:frontend": "npm run dev --prefix frontend",
+    "start": "npx concurrently \"npm run dev:backend\" \"npm run dev:frontend\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

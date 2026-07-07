@@ -1,0 +1,13 @@
+/* App transitions and utility styles */
+.pulse-glow {
+  animation: pulse-glow-anim 2s infinite ease-in-out;
+}
+
+@keyframes pulse-glow-anim {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(20, 184, 166, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(20, 184, 166, 0.6);
+  }
+}

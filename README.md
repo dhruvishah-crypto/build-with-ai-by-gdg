@@ -1,0 +1,114 @@
+# AAYUSH: Smart District Health Resource Optimizer
+
+AAYUSH is a real-time, AI-powered District Optimization Platform designed to address critical operational pain points in rural and semi-urban Primary Health Centres (PHCs) and Community Health Centres (CHCs). Built for **Hackathon Track 3 ("Smart Health")**, AAYUSH solves the three most challenging bottlenecks in public health administration:
+1. **Medicine Stock-outs:** Using predictive models to anticipate stock depletions and recommend optimized redistribution from surplus centers.
+2. **Unmanaged Footfall & Bed Capacities:** Monitoring live census and routing resources appropriately.
+3. **Doctor Absenteeism:** Detecting absences dynamically and flagging operations under extreme load.
+
+---
+
+## 🛠️ Architecture & Technology Stack
+
+The platform is designed as a hybrid monorepo:
+
+- **Frontend:** React (Vite) styled with a premium dark Glassmorphic theme using Tailwind CSS and Recharts for data joins.
+- **Backend:** FastAPI (Python) web server with asynchronous endpoint handlers.
+- **Database:** Google Cloud Firestore with a custom-engineered **local offline fallback (JSON-based)** for instant out-of-the-box local testing.
+- **AI Engine (Gemini & Vertex AI):**
+  - **Gemini API (`google-genai` SDK):** Feeds live inventories to Gemini to compute redistribution routes, warn about future stock-outs, and raise operational red flags.
+  - **Vertex AI Vision / Gemini Multimodal:** Accepts photos of hand-written inventory logs or stock manifests and extracts itemized counts.
+  - **Cloud Speech-to-Text & Translation:** Accepts regional voices (e.g. Hindi, Telugu) from ground workers and translates them into English.
+- **Analytics Middleware (BigQuery Simulation):** Merges real-time clinic inventories with historical NFHS-5 (National Family Health Survey) district demographics to calculate vulnerability indices.
+
+---
+
+## 📂 Directory Structure
+
+```text
+├── backend/
+│   ├── database.py         # Hybrid Firestore Client (GCP vs Local JSON Mock)
+│   ├── init_db.py         # Seed script for initial clinic coordinates/inventories
+│   ├── gemini_service.py   # AI engine for stock prediction and routing
+│   ├── audio_service.py    # Speech transcribing & translation service
+│   ├── vision_service.py   # Manifest log photo parsing
+│   ├── analytics_service.py# BigQuery NFHS demographics joins
+│   ├── main.py             # FastAPI entry routes & CORS
+│   └── Dockerfile          # Cloud Run ready deployment container
+├── frontend/
+│   ├── src/
+│   │   ├── App.jsx         # Responsive Staff & Admin Portal components
+│   │   ├── index.css       # Tailwind entry and Glassmorphism styling
+│   │   └── main.jsx        # Vite entry point
+│   ├── tailwind.config.js  # Styling definitions
+│   └── index.html          # Shell with SEO tags
+├── package.json            # Monorepo scripts runner
+└── README.md               # Setup Guide
+```
+
+---
+
+## ⚙️ Configuration & Environment Variables
+
+Create a `.env` file inside the `/backend` folder or set the variables in your shell environment:
+
+```env
+# Google GenAI API Key (Mandatory for real LLM features, otherwise fallback algorithm engages)
+GEMINI_API_KEY="your-api-key-here"
+
+# Google Cloud Project Credentials (For Firestore DB, Speech, and Translation)
+GOOGLE_APPLICATION_CREDENTIALS="path/to/your/service-account.json"
+FIREBASE_PROJECT_ID="your-firebase-project-id"
+```
+
+> [!NOTE]
+> If these variables are not provided, **AAYUSH automatically engages local fallback simulation engines**. The database will save records to `backend/db_mock.json`, voice notes will transcribe presets locally, and the redistribution engine will run a mathematical Haversine routing model, ensuring a fully functional, zero-setup hackathon submission.
+
+---
+
+## 🚀 Setup & Execution
+
+Follow these step-by-step instructions to get the platform running locally:
+
+### Step 1: Install Backend Python Dependencies
+Navigate to the backend directory and install the requirements:
+```bash
+cd backend
+pip install -r requirements.txt
+```
+
+### Step 2: Seed the Database
+Run the database seed script to populate clinic data (this creates `db_mock.json` locally or seeds Firestore):
+```bash
+python init_db.py
+cd ..
+```
+
+### Step 3: Install Frontend Node Modules
+Navigate to the frontend directory and install dependencies:
+```bash
+cd frontend
+npm install --legacy-peer-deps
+cd ..
+```
+
+### Step 4: Run the Application Concurrently
+In the root directory, install concurrently and launch both servers:
+```bash
+# Install root package scripts runner
+npm install
+
+# Run backend (port 8000) and frontend (port 5173) simultaneously
+npm run start
+```
+- **React Frontend Console:** Open `http://localhost:5173`
+- **FastAPI Documentation:** Open `http://localhost:8000/docs`
+
+---
+
+## 💡 Core Feature Demos
+
+1. **District Admin Cockpit:** View the dynamic SVG clinic map representing 5 key facilities around Hyderabad. Red dotted links and active pulses visualize real-time inventory redistributions recommendations generated by Gemini.
+2. **Approve Transfer:** In the Admin Portal, click **"Approve Transfer"** on any recommendation. The backend will execute a transaction to subtract stock from the surplus node, add it to the deficit node, update the ledger, and refresh the dashboard.
+3. **Clinic Staff Portal:** Select a facility, toggling doctor attendance status (e.g. marking all doctors absent creates a critical flag on the admin dashboard).
+4. **Voice Report Ingestion:** Click **"Simulate Hindi Audio"** or **"Simulate Telugu Audio"** in the Staff Portal. A recording visualizer will trigger, and the audio processor will transcribe and translate regional inputs (Hindi/Telugu) into English text.
+5. **Vision Manifest Parsing:** Drag and drop or upload a manifest photo sheet. The vision parser will count and print values, enabling staff to click **"Apply & Sync to Form"** to update stock inventories in one click.

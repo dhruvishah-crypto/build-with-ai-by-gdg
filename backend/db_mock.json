@@ -1,0 +1,189 @@
+{
+  "facilities": {
+    "phc_gachibowli": {
+      "id": "phc_gachibowli",
+      "name": "Gachibowli Primary Health Centre",
+      "type": "PHC",
+      "latitude": 17.4483,
+      "longitude": 78.3741,
+      "district": "Rangareddy",
+      "doctor_attendance": {
+        "Dr. A. Srinivas": "Present",
+        "Dr. P. Radhika": "Absent",
+        "Dr. K. Naresh": "Present"
+      },
+      "beds": {
+        "total": 10,
+        "available": 3
+      },
+      "inventory": {
+        "Paracetamol (500mg)": 80,
+        "Amoxicillin (250mg)": 300,
+        "ORS Packets": 40,
+        "Insulin Vials": 5,
+        "Metformin (500mg)": 250,
+        "Ibuprofen (400mg)": 90
+      },
+      "min_stock": {
+        "Paracetamol (500mg)": 200,
+        "Amoxicillin (250mg)": 150,
+        "ORS Packets": 100,
+        "Insulin Vials": 20,
+        "Metformin (500mg)": 150,
+        "Ibuprofen (400mg)": 100
+      },
+      "daily_footfall": 120,
+      "rating": 4.1
+    },
+    "phc_charminar": {
+      "id": "phc_charminar",
+      "name": "Charminar Primary Health Centre",
+      "type": "PHC",
+      "latitude": 17.3616,
+      "longitude": 78.4747,
+      "district": "Hyderabad",
+      "doctor_attendance": {
+        "Dr. M. A. Rahaman": "Absent",
+        "Dr. Fatima Begum": "Absent"
+      },
+      "beds": {
+        "total": 8,
+        "available": 2
+      },
+      "inventory": {
+        "Paracetamol (500mg)": 650,
+        "Amoxicillin (250mg)": 50,
+        "ORS Packets": 300,
+        "Insulin Vials": 35,
+        "Metformin (500mg)": 40,
+        "Ibuprofen (400mg)": 300
+      },
+      "min_stock": {
+        "Paracetamol (500mg)": 200,
+        "Amoxicillin (250mg)": 150,
+        "ORS Packets": 100,
+        "Insulin Vials": 20,
+        "Metformin (500mg)": 150,
+        "Ibuprofen (400mg)": 100
+      },
+      "daily_footfall": 190,
+      "rating": 3.8
+    },
+    "phc_uppal": {
+      "id": "phc_uppal",
+      "name": "Uppal Primary Health Centre",
+      "type": "PHC",
+      "latitude": 17.4019,
+      "longitude": 78.5602,
+      "district": "Medchal-Malkajgiri",
+      "doctor_attendance": {
+        "Dr. S. K. Rao": "Present",
+        "Dr. Lakshmi Devi": "Present"
+      },
+      "beds": {
+        "total": 12,
+        "available": 8
+      },
+      "inventory": {
+        "Paracetamol (500mg)": 10,
+        "Amoxicillin (250mg)": 80,
+        "ORS Packets": 20,
+        "Insulin Vials": 2,
+        "Metformin (500mg)": 300,
+        "Ibuprofen (400mg)": 15
+      },
+      "min_stock": {
+        "Paracetamol (500mg)": 250,
+        "Amoxicillin (250mg)": 150,
+        "ORS Packets": 120,
+        "Insulin Vials": 25,
+        "Metformin (500mg)": 150,
+        "Ibuprofen (400mg)": 100
+      },
+      "daily_footfall": 150,
+      "rating": 4.3
+    },
+    "chc_kondapur": {
+      "id": "chc_kondapur",
+      "name": "Kondapur Community Health Centre",
+      "type": "CHC",
+      "latitude": 17.4622,
+      "longitude": 78.3568,
+      "district": "Rangareddy",
+      "doctor_attendance": {
+        "Dr. J. Geetha": "Present",
+        "Dr. V. Prasad": "Present",
+        "Dr. R. K. Sen": "Present",
+        "Dr. N. Swetha": "Present"
+      },
+      "beds": {
+        "total": 35,
+        "available": 14
+      },
+      "inventory": {
+        "Paracetamol (500mg)": 1200,
+        "Amoxicillin (250mg)": 450,
+        "ORS Packets": 800,
+        "Insulin Vials": 100,
+        "Metformin (500mg)": 600,
+        "Ibuprofen (400mg)": 500
+      },
+      "min_stock": {
+        "Paracetamol (500mg)": 500,
+        "Amoxicillin (250mg)": 300,
+        "ORS Packets": 300,
+        "Insulin Vials": 50,
+        "Metformin (500mg)": 300,
+        "Ibuprofen (400mg)": 250
+      },
+      "daily_footfall": 320,
+      "rating": 4.5
+    },
+    "chc_nampally": {
+      "id": "chc_nampally",
+      "name": "Nampally Community Health Centre",
+      "type": "CHC",
+      "latitude": 17.3888,
+      "longitude": 78.4682,
+      "district": "Hyderabad",
+      "doctor_attendance": {
+        "Dr. Imran Khan": "Present",
+        "Dr. S. Siddharth": "Absent",
+        "Dr. Mary John": "Present"
+      },
+      "beds": {
+        "total": 30,
+        "available": 5
+      },
+      "inventory": {
+        "Paracetamol (500mg)": 150,
+        "Amoxicillin (250mg)": 120,
+        "ORS Packets": 180,
+        "Insulin Vials": 15,
+        "Metformin (500mg)": 80,
+        "Ibuprofen (400mg)": 450
+      },
+      "min_stock": {
+        "Paracetamol (500mg)": 400,
+        "Amoxicillin (250mg)": 300,
+        "ORS Packets": 250,
+        "Insulin Vials": 40,
+        "Metformin (500mg)": 250,
+        "Ibuprofen (400mg)": 250
+      },
+      "daily_footfall": 280,
+      "rating": 3.9
+    }
+  },
+  "inventory_transfers": {
+    "transfer_001": {
+      "id": "transfer_001",
+      "from_facility_id": "chc_kondapur",
+      "to_facility_id": "phc_gachibowli",
+      "medicine": "Paracetamol (500mg)",
+      "quantity": 150,
+      "status": "Pending",
+      "timestamp": "2026-07-07T10:00:00Z"
+    }
+  }
+}
