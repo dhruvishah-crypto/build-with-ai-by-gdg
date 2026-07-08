@@ -90,8 +90,12 @@ def transcribe_and_translate_audio(audio_content: bytes, filename: str = "") -> 
             logger.error(f"Error calling Cloud Speech/Translate API: {e}. Falling back to simulation.")
             
     # Fallback simulation
-    # We pick a simulation based on the length of filename or audio_content
-    index = len(audio_content) % len(SIMULATED_RESPONSES)
-    simulated = SIMULATED_RESPONSES[index]
+    if "hindi" in filename.lower():
+        simulated = SIMULATED_RESPONSES[0]
+    elif "telugu" in filename.lower():
+        simulated = SIMULATED_RESPONSES[1]
+    else:
+        index = len(audio_content) % len(SIMULATED_RESPONSES)
+        simulated = SIMULATED_RESPONSES[index]
     logger.info(f"Simulating audio transcription for regional note (mocking language '{simulated['detected_language']}').")
     return simulated
