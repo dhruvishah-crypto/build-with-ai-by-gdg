@@ -1,5 +1,7 @@
 # AAYUSH: Smart District Health Resource Optimizer
 
+🔍 **Judges Showcase:** Check out our dedicated [Walkthrough & Media Folder](./walkthrough/) to view a complete step-by-step feature guide, screenshots, and the system screen recording!
+
 AAYUSH is a real-time, AI-powered District Optimization Platform designed to address critical operational pain points in rural and semi-urban Primary Health Centres (PHCs) and Community Health Centres (CHCs). Built for **Hackathon Track 3 ("Smart Health")**, AAYUSH solves the three most challenging bottlenecks in public health administration:
 1. **Medicine Stock-outs:** Using predictive models to anticipate stock depletions and recommend optimized redistribution from surplus centers.
 2. **Unmanaged Footfall & Bed Capacities:** Monitoring live census and routing resources appropriately.
