@@ -825,17 +825,17 @@ export default function App() {
   return (
     <div className="min-h-screen pb-12 flex flex-col">
       {/* 🚀 Header */}
-      <header className="border-b border-slate-800 bg-dark-900/80 backdrop-blur-md sticky top-0 z-40 px-6 py-4">
+      <header className="border-b border-slate-200 bg-white/80 backdrop-blur-md sticky top-0 z-40 px-6 py-4 shadow-sm">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <div className="bg-primary-500/20 text-primary-500 p-2.5 rounded-lg border border-primary-500/30 pulse-glow">
+            <div className="bg-teal-50 text-teal-600 p-2.5 rounded-lg border border-teal-200 pulse-glow">
               <Activity className="h-6 w-6" />
             </div>
             <div>
-              <h1 className="text-xl font-extrabold tracking-tight bg-gradient-to-r from-primary-500 via-emerald-400 to-teal-600 bg-clip-text text-transparent">
+              <h1 className="text-xl font-extrabold tracking-tight bg-gradient-to-r from-sky-600 via-teal-500 to-emerald-600 bg-clip-text text-transparent">
                 AAYUSH
               </h1>
-              <p className="text-xs text-slate-400 font-medium">Smart District Health Resource Optimizer</p>
+              <p className="text-xs text-slate-500 font-medium">Smart District Health Resource Optimizer</p>
             </div>
           </div>
 
@@ -845,8 +845,8 @@ export default function App() {
               onClick={() => setActiveTab('admin')}
               className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 ${
                 activeTab === 'admin'
-                  ? 'bg-primary-600 text-white shadow-lg shadow-primary-600/30'
-                  : 'text-slate-400 hover:text-slate-200 bg-dark-800/80 border border-slate-700/50'
+                  ? 'bg-sky-600 text-white shadow-lg shadow-sky-600/30'
+                  : 'text-slate-600 hover:text-slate-800 bg-white border border-slate-200 shadow-sm'
               }`}
             >
               <Grid className="h-4 w-4" />
@@ -856,8 +856,8 @@ export default function App() {
               onClick={() => setActiveTab('staff')}
               className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 ${
                 activeTab === 'staff'
-                  ? 'bg-primary-600 text-white shadow-lg shadow-primary-600/30'
-                  : 'text-slate-400 hover:text-slate-200 bg-dark-800/80 border border-slate-700/50'
+                  ? 'bg-sky-600 text-white shadow-lg shadow-sky-600/30'
+                  : 'text-slate-600 hover:text-slate-800 bg-white border border-slate-200 shadow-sm'
               }`}
             >
               <User className="h-4 w-4" />
@@ -865,14 +865,14 @@ export default function App() {
             </button>
 
             {/* Backend Connection Indicator */}
-            <div className="flex items-center gap-2 pl-3 border-l border-slate-800">
+            <div className="flex items-center gap-2 pl-3 border-l border-slate-200">
               {backendStatus === 'online' ? (
-                <div className="flex items-center gap-1.5 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 px-2 py-1 rounded text-xs">
+                <div className="flex items-center gap-1.5 bg-emerald-50 border border-emerald-200 text-emerald-700 px-2 py-1 rounded text-xs">
                   <Server className="h-3 w-3" />
                   Live Sync
                 </div>
               ) : (
-                <div className="flex items-center gap-1.5 bg-amber-500/10 border border-amber-500/30 text-amber-400 px-2 py-1 rounded text-xs animate-pulse">
+                <div className="flex items-center gap-1.5 bg-amber-50 border border-amber-200 text-amber-700 px-2 py-1 rounded text-xs animate-pulse">
                   <AlertCircle className="h-3 w-3" />
                   Offline Demo
                 </div>
@@ -894,46 +894,46 @@ export default function App() {
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
               <div className="glass-panel glass-panel-hover p-5 flex items-center justify-between">
                 <div>
-                  <p className="text-xs text-slate-400 font-semibold uppercase">Total Clinics Managed</p>
-                  <h3 className="text-2xl font-bold mt-1 text-slate-100">{facilities.length}</h3>
+                  <p className="text-xs text-slate-500 font-semibold uppercase">Total Clinics Managed</p>
+                  <h3 className="text-2xl font-bold mt-1 text-slate-900">{facilities.length}</h3>
                 </div>
-                <div className="bg-primary-500/10 text-primary-500 p-3 rounded-lg border border-primary-500/20">
+                <div className="bg-teal-50 text-teal-600 p-3 rounded-lg border border-teal-200">
                   <MapPin className="h-5 w-5" />
                 </div>
               </div>
 
               <div className="glass-panel glass-panel-hover p-5 flex items-center justify-between">
                 <div>
-                  <p className="text-xs text-slate-400 font-semibold uppercase">Critical Stockout Warnings</p>
-                  <h3 className="text-2xl font-bold mt-1 text-red-400">
+                  <p className="text-xs text-slate-500 font-semibold uppercase">Critical Stockout Warnings</p>
+                  <h3 className="text-2xl font-bold mt-1 text-red-600">
                     {optimization.stock_out_warnings.filter(w => w.urgency === 'High').length}
                   </h3>
                 </div>
-                <div className="bg-red-500/10 text-red-500 p-3 rounded-lg border border-red-500/20">
+                <div className="bg-red-50 text-red-600 p-3 rounded-lg border border-red-200">
                   <AlertTriangle className="h-5 w-5" />
                 </div>
               </div>
 
               <div className="glass-panel glass-panel-hover p-5 flex items-center justify-between">
                 <div>
-                  <p className="text-xs text-slate-400 font-semibold uppercase">Active Red Flags</p>
-                  <h3 className="text-2xl font-bold mt-1 text-amber-400">
+                  <p className="text-xs text-slate-500 font-semibold uppercase">Active Red Flags</p>
+                  <h3 className="text-2xl font-bold mt-1 text-amber-700">
                     {optimization.admin_flags.length}
                   </h3>
                 </div>
-                <div className="bg-amber-500/10 text-amber-500 p-3 rounded-lg border border-amber-500/20">
+                <div className="bg-amber-50 text-amber-700 p-3 rounded-lg border border-amber-200">
                   <ShieldAlert className="h-5 w-5" />
                 </div>
               </div>
 
               <div className="glass-panel glass-panel-hover p-5 flex items-center justify-between">
                 <div>
-                  <p className="text-xs text-slate-400 font-semibold uppercase">Transfers Completed</p>
-                  <h3 className="text-2xl font-bold mt-1 text-emerald-400">
+                  <p className="text-xs text-slate-500 font-semibold uppercase">Transfers Completed</p>
+                  <h3 className="text-2xl font-bold mt-1 text-emerald-600">
                     {transfers.filter(t => t.status === 'Approved').length}
                   </h3>
                 </div>
-                <div className="bg-emerald-500/10 text-emerald-500 p-3 rounded-lg border border-emerald-500/20">
+                <div className="bg-emerald-50 text-emerald-600 p-3 rounded-lg border border-emerald-200">
                   <Truck className="h-5 w-5" />
                 </div>
               </div>
@@ -947,28 +947,28 @@ export default function App() {
                 <div>
                   <div className="flex items-center justify-between mb-4">
                     <div>
-                      <h2 className="text-lg font-bold text-slate-100 flex items-center gap-2">
-                        <Map className="h-5 w-5 text-primary-500" />
+                      <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
+                        <Map className="h-5 w-5 text-teal-600" />
                         District Resource Distribution Map
                       </h2>
-                      <p className="text-xs text-slate-400 mt-0.5">Interactive geographical node tracking for Hyderabad clinics cluster</p>
+                      <p className="text-xs text-slate-500 mt-0.5">Interactive geographical node tracking for Hyderabad clinics cluster</p>
                     </div>
-                    <button onClick={fetchData} className="text-slate-400 hover:text-primary-500 transition-colors">
+                    <button onClick={fetchData} className="text-slate-500 hover:text-sky-600 transition-colors">
                       <RefreshCw className="h-4 w-4" />
                     </button>
                   </div>
                   
                   {/* SVG Geographic Visualizer */}
-                  <div className="relative w-full h-[320px] bg-dark-900/50 rounded-xl border border-slate-800/80 flex items-center justify-center overflow-hidden">
+                  <div className="relative w-full h-[320px] bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-center overflow-hidden">
                     
                     {/* Background Grid Lines representing coordinates */}
-                    <div className="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:16px_16px] opacity-40"></div>
+                    <div className="absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:16px_16px] opacity-60"></div>
                     
                     <svg className="w-full h-full p-6 absolute inset-0 z-10" viewBox="0 0 600 320" xmlns="http://www.w3.org/2000/svg">
                       <defs>
                         <linearGradient id="route-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
                           <stop offset="0%" stopColor="#14b8a6" stopOpacity="0.8"/>
-                          <stop offset="100%" stopColor="#818cf8" stopOpacity="0.2"/>
+                          <stop offset="100%" stopColor="#0284c7" stopOpacity="0.2"/>
                         </linearGradient>
                         <marker id="arrow" viewBox="0 0 10 10" refX="22" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
                           <path d="M 0 0 L 10 5 L 0 10 z" fill="#14b8a6"/>
@@ -1030,7 +1030,7 @@ export default function App() {
                                 cy={coords.y} 
                                 r="18" 
                                 fill={markerColor} 
-                                className="opacity-15 animate-ping"
+                                className="opacity-20 animate-ping"
                               />
                             )}
                             <circle 
@@ -1038,15 +1038,17 @@ export default function App() {
                               cy={coords.y} 
                               r="9" 
                               fill={markerColor} 
-                              className="group-hover:r-[11] transition-all duration-150 border-2 border-slate-900"
+                              stroke="#ffffff"
+                              strokeWidth="2"
+                              className="group-hover:r-[11] transition-all duration-150"
                             />
                             <text 
                               x={coords.x} 
                               y={coords.y - 14} 
-                              fill="#94a3b8" 
+                              fill="#475569" 
                               fontSize="10" 
                               textAnchor="middle" 
-                              className="font-bold select-none group-hover:fill-slate-100"
+                              className="font-bold select-none group-hover:fill-slate-900"
                             >
                               {fac.name.split(' ')[0]} {/* First word abbreviation */}
                             </text>
@@ -1056,7 +1058,7 @@ export default function App() {
                     </svg>
 
                     {/* Simple Custom Map Legend Overlay */}
-                    <div className="absolute bottom-3 left-4 flex gap-4 text-[10px] text-slate-400 font-semibold bg-dark-900/90 px-3 py-1.5 rounded-lg border border-slate-800">
+                    <div className="absolute bottom-3 left-4 flex gap-4 text-[10px] text-slate-500 font-semibold bg-white/95 px-3 py-1.5 rounded-lg border border-slate-200 shadow-sm">
                       <div className="flex items-center gap-1.5"><span className="h-2 w-2 rounded-full bg-primary-500"></span> Normal Node</div>
                       <div className="flex items-center gap-1.5"><span className="h-2 w-2 rounded-full bg-alert-warning"></span> Stock Deficit</div>
                       <div className="flex items-center gap-1.5"><span className="h-2 w-2 rounded-full bg-alert-danger animate-pulse"></span> Abs Absent/Critical</div>
@@ -1067,29 +1069,29 @@ export default function App() {
 
                 {/* Node Detail Bar (Synced to Selection) */}
                 {selectedAdminFac && (
-                  <div className="mt-4 p-4 bg-dark-900/60 rounded-lg border border-slate-800/80 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                  <div className="mt-4 p-4 bg-slate-50 rounded-lg border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4">
                     <div>
-                      <h4 className="text-sm font-bold text-slate-100 flex items-center gap-1.5">
-                        <MapPin className="h-4 w-4 text-primary-500" />
+                      <h4 className="text-sm font-bold text-slate-900 flex items-center gap-1.5">
+                        <MapPin className="h-4 w-4 text-teal-600" />
                         {selectedAdminFac.name}
                       </h4>
-                      <p className="text-xs text-slate-400 mt-0.5">
-                        Type: <span className="text-slate-200 font-semibold">{selectedAdminFac.type}</span> | 
-                        District: <span className="text-slate-200 font-semibold">{selectedAdminFac.district}</span> | 
-                        Daily Footfall: <span className="text-slate-200 font-semibold">{selectedAdminFac.daily_footfall}</span>
+                      <p className="text-xs text-slate-500 mt-0.5">
+                        Type: <span className="text-slate-800 font-semibold">{selectedAdminFac.type}</span> | 
+                        District: <span className="text-slate-800 font-semibold">{selectedAdminFac.district}</span> | 
+                        Daily Footfall: <span className="text-slate-800 font-semibold">{selectedAdminFac.daily_footfall}</span>
                       </p>
                     </div>
 
                     <div className="flex items-center gap-6">
                       <div className="text-right">
-                        <p className="text-[10px] text-slate-400 uppercase font-bold">Bed Vacancies</p>
-                        <p className="text-xs text-emerald-400 font-extrabold mt-0.5">
+                        <p className="text-[10px] text-slate-500 uppercase font-bold">Bed Vacancies</p>
+                        <p className="text-xs text-emerald-600 font-extrabold mt-0.5">
                           {selectedAdminFac.beds.available} / {selectedAdminFac.beds.total} available
                         </p>
                       </div>
-                      <div className="text-right border-l border-slate-800 pl-6">
-                        <p className="text-[10px] text-slate-400 uppercase font-bold">Staff Attendance</p>
-                        <p className="text-xs text-slate-200 font-bold mt-0.5">
+                      <div className="text-right border-l border-slate-200 pl-6">
+                        <p className="text-[10px] text-slate-500 uppercase font-bold">Staff Attendance</p>
+                        <p className="text-xs text-slate-800 font-bold mt-0.5">
                           {Object.values(selectedAdminFac.doctor_attendance || {}).filter(st => st === 'Present').length} / {Object.keys(selectedAdminFac.doctor_attendance || {}).length} Present
                         </p>
                       </div>
@@ -1104,13 +1106,13 @@ export default function App() {
                 {/* Warnings / Red Flags Panel */}
                 <div className="glass-panel p-5 flex flex-col justify-between min-h-[220px]">
                   <div>
-                    <h3 className="text-sm font-bold text-slate-100 flex items-center gap-2 mb-3">
-                      <ShieldAlert className="h-4.5 w-4.5 text-red-500" />
+                    <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2 mb-3">
+                      <ShieldAlert className="h-4.5 w-4.5 text-red-600" />
                       Critical Operational Flags
                     </h3>
                     
                     {optimization.admin_flags.length === 0 ? (
-                      <p className="text-xs text-slate-400 italic">No high-priority administrative flags detected.</p>
+                      <p className="text-xs text-slate-500 italic">No high-priority administrative flags detected.</p>
                     ) : (
                       <div className="space-y-3 max-h-[160px] overflow-y-auto pr-1">
                         {optimization.admin_flags.map((flag, idx) => (
@@ -1118,14 +1120,14 @@ export default function App() {
                             key={idx} 
                             className={`p-3 rounded-lg border text-xs flex gap-2 ${
                               flag.urgency === 'Critical' 
-                                ? 'bg-red-500/10 border-red-500/30 text-red-200' 
-                                : 'bg-amber-500/10 border-amber-500/30 text-amber-200'
+                                ? 'bg-red-50 border-red-200 text-red-800' 
+                                : 'bg-amber-50 border-amber-200 text-amber-800'
                             }`}
                           >
                             <AlertTriangle className="h-4.5 w-4.5 shrink-0" />
                             <div>
                               <p className="font-bold">{flag.type} at {flag.facility_name.split(' ')[0]}</p>
-                              <p className="mt-0.5 text-slate-300 leading-relaxed text-[11px]">{flag.description}</p>
+                              <p className="mt-0.5 text-slate-600 leading-relaxed text-[11px]">{flag.description}</p>
                             </div>
                           </div>
                         ))}
@@ -1137,24 +1139,24 @@ export default function App() {
                 {/* Stock Out Warnings List */}
                 <div className="glass-panel p-5 flex flex-col justify-between min-h-[220px]">
                   <div>
-                    <h3 className="text-sm font-bold text-slate-100 flex items-center gap-2 mb-3">
-                      <AlertCircle className="h-4.5 w-4.5 text-amber-500" />
+                    <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2 mb-3">
+                      <AlertCircle className="h-4.5 w-4.5 text-amber-600" />
                       Predicted Stock Gaps
                     </h3>
                     
                     {optimization.stock_out_warnings.length === 0 ? (
-                      <p className="text-xs text-slate-400 italic">All inventories optimized and above threshold levels.</p>
+                      <p className="text-xs text-slate-500 italic">All inventories optimized and above threshold levels.</p>
                     ) : (
                       <div className="space-y-2.5 max-h-[160px] overflow-y-auto pr-1">
                         {optimization.stock_out_warnings.map((warn, idx) => (
-                          <div key={idx} className="flex items-center justify-between p-2 rounded bg-dark-900/50 border border-slate-800 text-xs">
+                          <div key={idx} className="flex items-center justify-between p-2 rounded bg-slate-50 border border-slate-200 text-xs">
                             <div>
-                              <p className="font-bold text-slate-200">{warn.medicine}</p>
-                              <p className="text-[10px] text-slate-400 mt-0.5">{warn.facility_name.split(' ')[0]} ({warn.current_stock} left)</p>
+                              <p className="font-bold text-slate-800">{warn.medicine}</p>
+                              <p className="text-[10px] text-slate-500 mt-0.5">{warn.facility_name.split(' ')[0]} ({warn.current_stock} left)</p>
                             </div>
                             <div className="text-right">
                               <span className={`px-2 py-0.5 rounded-full text-[9px] font-bold ${
-                                warn.urgency === 'High' ? 'bg-red-500/20 text-red-400 border border-red-500/30' : 'bg-amber-500/20 text-amber-400 border border-amber-500/30'
+                                warn.urgency === 'High' ? 'bg-red-50 text-red-700 border border-red-200' : 'bg-amber-50 text-amber-700 border border-amber-200'
                               }`}>
                                 Est. {warn.days_remaining_estimate} Days
                               </span>
@@ -1171,20 +1173,20 @@ export default function App() {
 
             {/* AI Redistribution Action Table */}
             <div className="glass-panel p-6">
-              <h2 className="text-md font-bold text-slate-100 flex items-center gap-2 mb-4">
-                <Sparkles className="h-5 w-5 text-primary-500" />
+              <h2 className="text-md font-bold text-slate-900 flex items-center gap-2 mb-4">
+                <Sparkles className="h-5 w-5 text-teal-600" />
                 AI-Driven Medicine Redistribution Engine
               </h2>
               
               {optimization.redistribution_recommendations.length === 0 ? (
-                <div className="p-8 text-center border border-dashed border-slate-800 rounded-lg">
-                  <p className="text-sm text-slate-400 italic">No asset redistributions recommended. Stock levels are stable.</p>
+                <div className="p-8 text-center border border-dashed border-slate-200 rounded-lg">
+                  <p className="text-sm text-slate-500 italic">No asset redistributions recommended. Stock levels are stable.</p>
                 </div>
               ) : (
                 <div className="overflow-x-auto">
                   <table className="w-full text-left text-xs border-collapse">
                     <thead>
-                      <tr className="border-b border-slate-800 text-slate-400 font-bold uppercase">
+                      <tr className="border-b border-slate-200 text-slate-500 font-bold uppercase">
                         <th className="pb-3">Source Facility</th>
                         <th className="pb-3">Destination Facility</th>
                         <th className="pb-3">Required Medicine</th>
@@ -1194,19 +1196,19 @@ export default function App() {
                         <th className="pb-3 text-center">Action</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-slate-800/60">
+                    <tbody className="divide-y divide-slate-200">
                       {optimization.redistribution_recommendations.map((rec, i) => (
-                        <tr key={i} className="hover:bg-slate-800/20 transition-colors">
-                          <td className="py-3 font-semibold text-slate-200">{rec.from_facility_name}</td>
-                          <td className="py-3 font-semibold text-slate-200">{rec.to_facility_name}</td>
-                          <td className="py-3 font-bold text-primary-400">{rec.medicine}</td>
-                          <td className="py-3 text-center font-bold text-slate-100">{rec.transfer_quantity}</td>
-                          <td className="py-3 text-center text-slate-400">{rec.distance_km} km</td>
-                          <td className="py-3 text-[11px] text-slate-400 max-w-[240px] leading-relaxed">{rec.reason}</td>
+                        <tr key={i} className="hover:bg-slate-50 transition-colors">
+                          <td className="py-3 font-semibold text-slate-800">{rec.from_facility_name}</td>
+                          <td className="py-3 font-semibold text-slate-800">{rec.to_facility_name}</td>
+                          <td className="py-3 font-bold text-teal-600">{rec.medicine}</td>
+                          <td className="py-3 text-center font-bold text-slate-900">{rec.transfer_quantity}</td>
+                          <td className="py-3 text-center text-slate-500">{rec.distance_km} km</td>
+                          <td className="py-3 text-[11px] text-slate-650 max-w-[240px] leading-relaxed">{rec.reason}</td>
                           <td className="py-3 text-center">
                             <button
                               onClick={() => handleApproveTransfer(rec)}
-                              className="px-3 py-1.5 bg-primary-600 hover:bg-primary-700 text-white rounded font-bold shadow-md hover:shadow-primary-500/20 transition-all flex items-center gap-1.5 mx-auto"
+                              className="px-3 py-1.5 bg-sky-600 hover:bg-sky-700 text-white rounded font-bold shadow-md hover:shadow-sky-500/20 transition-all flex items-center gap-1.5 mx-auto"
                             >
                               <CheckCircle className="h-3.5 w-3.5" />
                               Approve Transfer
@@ -1225,19 +1227,20 @@ export default function App() {
               
               {/* Vulnerability vs Operational Index Chart */}
               <div className="glass-panel p-6">
-                <h3 className="text-sm font-bold text-slate-100 mb-4 flex items-center gap-2">
-                  <TrendingUp className="h-4.5 w-4.5 text-primary-500" />
+                <h3 className="text-sm font-bold text-slate-900 mb-4 flex items-center gap-2">
+                  <TrendingUp className="h-4.5 w-4.5 text-teal-600" />
                   Demographics Join: Clinic Priority index (NFHS vs Live Ops)
                 </h3>
                 <div className="h-[280px]">
                   <ResponsiveContainer width="100%" height="100%">
                     <BarChart data={analytics} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
-                      <CartesianGrid strokeDasharray="3 3" stroke="#1f2937" />
-                      <XAxis dataKey="facility_name" stroke="#64748b" tickFormatter={(v) => v.split(' ')[0]} fontSize={11} />
-                      <YAxis stroke="#64748b" fontSize={11} />
+                      <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                      <XAxis dataKey="facility_name" stroke="#475569" tickFormatter={(v) => v.split(' ')[0]} fontSize={11} />
+                      <YAxis stroke="#475569" fontSize={11} />
                       <Tooltip 
-                        contentStyle={{ backgroundColor: '#111827', border: '1px solid #374151', borderRadius: 8 }}
-                        labelStyle={{ color: '#f8fafc', fontWeight: 'bold' }}
+                        contentStyle={{ backgroundColor: '#ffffff', border: '1px solid #e2e8f0', borderRadius: 8 }}
+                        labelStyle={{ color: '#0f172a', fontWeight: 'bold' }}
+                        itemStyle={{ color: '#1e293b' }}
                       />
                       <Legend />
                       <Bar name="Live Operational Rating" dataKey="operational_score" fill="#14b8a6" radius={[4, 4, 0, 0]} />
@@ -1251,14 +1254,14 @@ export default function App() {
               {/* BigQuery Join Raw Demographics Table */}
               <div className="glass-panel p-6 flex flex-col justify-between">
                 <div>
-                  <h3 className="text-sm font-bold text-slate-100 mb-4 flex items-center gap-2">
-                    <FileText className="h-4.5 w-4.5 text-primary-500" />
+                  <h3 className="text-sm font-bold text-slate-900 mb-4 flex items-center gap-2">
+                    <FileText className="h-4.5 w-4.5 text-teal-600" />
                     Simulated BigQuery Join Table (District Demographics Profile)
                   </h3>
                   <div className="overflow-x-auto text-[11px]">
                     <table className="w-full text-left border-collapse">
                       <thead>
-                        <tr className="border-b border-slate-800 text-slate-400 font-bold">
+                        <tr className="border-b border-slate-200 text-slate-500 font-bold">
                           <th className="pb-2">Facility Name</th>
                           <th className="pb-2">District</th>
                           <th className="pb-2 text-center">Child Malnutrition (NFHS)</th>
@@ -1267,23 +1270,23 @@ export default function App() {
                           <th className="pb-2 text-center">Pop Density (/sq km)</th>
                         </tr>
                       </thead>
-                      <tbody className="divide-y divide-slate-800/40">
+                      <tbody className="divide-y divide-slate-200/60">
                         {analytics.map((row, idx) => (
-                          <tr key={idx} className="hover:bg-slate-800/10">
-                            <td className="py-2.5 font-semibold text-slate-300">{row.facility_name}</td>
-                            <td className="py-2.5 text-slate-400">{row.district}</td>
-                            <td className="py-2.5 text-center text-rose-400 font-bold">{row.demographics?.nutrition_deficit_percent}%</td>
-                            <td className="py-2.5 text-center text-emerald-400 font-bold">{row.demographics?.maternal_care_coverage}%</td>
-                            <td className="py-2.5 text-center text-amber-400 font-bold">{100 - row.demographics?.safe_drinking_water_access}%</td>
-                            <td className="py-2.5 text-center text-slate-300 font-medium">{row.demographics?.population_density}</td>
+                          <tr key={idx} className="hover:bg-slate-50">
+                            <td className="py-2.5 font-semibold text-slate-700">{row.facility_name}</td>
+                            <td className="py-2.5 text-slate-500">{row.district}</td>
+                            <td className="py-2.5 text-center text-rose-600 font-bold">{row.demographics?.nutrition_deficit_percent}%</td>
+                            <td className="py-2.5 text-center text-emerald-600 font-bold">{row.demographics?.maternal_care_coverage}%</td>
+                            <td className="py-2.5 text-center text-amber-600 font-bold">{100 - row.demographics?.safe_drinking_water_access}%</td>
+                            <td className="py-2.5 text-center text-slate-700 font-medium">{row.demographics?.population_density}</td>
                           </tr>
                         ))}
                       </tbody>
                     </table>
                   </div>
                 </div>
-                <div className="text-[10px] text-slate-400 mt-4 leading-relaxed bg-dark-900/40 p-2.5 rounded border border-slate-800">
-                  <span className="font-bold text-slate-300">Logic Note:</span> High optimization Priority Rank indices are awarded to facilities having low Operational Ratings (doctor absenteeism & stock-outs) positioned in regions displaying deep NFHS child stunting and water vulnerability.
+                <div className="text-[10px] text-slate-505 mt-4 leading-relaxed bg-slate-50 p-2.5 rounded border border-slate-200">
+                  <span className="font-bold text-slate-800">Logic Note:</span> High optimization Priority Rank indices are awarded to facilities having low Operational Ratings (doctor absenteeism & stock-outs) positioned in regions displaying deep NFHS child stunting and water vulnerability.
                 </div>
               </div>
 
@@ -1291,34 +1294,34 @@ export default function App() {
 
             {/* Transfer History Log */}
             <div className="glass-panel p-6">
-              <h3 className="text-sm font-bold text-slate-100 flex items-center gap-2 mb-4">
-                <Clock className="h-4.5 w-4.5 text-primary-500" />
+              <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2 mb-4">
+                <Clock className="h-4.5 w-4.5 text-teal-600" />
                 Resource Transfer Ledger & Logs
               </h3>
               
               {transfers.length === 0 ? (
-                <p className="text-xs text-slate-400 italic">No stock transfers logged yet.</p>
+                <p className="text-xs text-slate-500 italic">No stock transfers logged yet.</p>
               ) : (
                 <div className="space-y-2 max-h-[200px] overflow-y-auto pr-1">
                   {transfers.map((trans, i) => (
-                    <div key={i} className="flex flex-col md:flex-row md:items-center justify-between p-3 rounded bg-dark-900/60 border border-slate-800/80 text-xs gap-2">
+                    <div key={i} className="flex flex-col md:flex-row md:items-center justify-between p-3 rounded bg-slate-50 border border-slate-200 text-xs gap-2">
                       <div className="flex items-center gap-2.5">
-                        <Truck className="h-4 w-4 text-emerald-500 shrink-0" />
+                        <Truck className="h-4 w-4 text-emerald-600 shrink-0" />
                         <div>
-                          <p className="text-slate-200">
-                            Moved <span className="font-bold text-emerald-400">{trans.quantity} units</span> of <span className="font-bold text-primary-400">{trans.medicine}</span>
+                          <p className="text-slate-800">
+                            Moved <span className="font-bold text-emerald-600">{trans.quantity} units</span> of <span className="font-bold text-teal-600">{trans.medicine}</span>
                           </p>
-                          <p className="text-[10px] text-slate-400 mt-0.5">
+                          <p className="text-[10px] text-slate-500 mt-0.5">
                             From: {trans.from_facility_name} &rarr; To: {trans.to_facility_name}
                           </p>
                         </div>
                       </div>
                       <div className="flex items-center gap-3 text-right shrink-0">
-                        <span className="text-[10px] text-slate-400 font-mono">
+                        <span className="text-[10px] text-slate-505 font-mono">
                           {new Date(trans.timestamp).toLocaleString()}
                         </span>
                         <span className={`px-2 py-0.5 rounded text-[9px] font-bold ${
-                          trans.status === 'Approved' ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30' : 'bg-amber-500/10 text-amber-400 border border-amber-500/30'
+                          trans.status === 'Approved' ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : 'bg-amber-50 text-amber-700 border border-amber-200'
                         }`}>
                           {trans.status}
                         </span>
@@ -1339,12 +1342,12 @@ export default function App() {
             {/* Control Panel selector */}
             <div className="glass-panel p-5 flex flex-col md:flex-row items-center justify-between gap-4">
               <div>
-                <h2 className="text-lg font-bold text-slate-100">Clinic Operational Logging Station</h2>
-                <p className="text-xs text-slate-400 mt-0.5">Report local inventory counts, staff attendance, voice logs, and supply sheets</p>
+                <h2 className="text-lg font-bold text-slate-900">Clinic Operational Logging Station</h2>
+                <p className="text-xs text-slate-500 mt-0.5">Report local inventory counts, staff attendance, voice logs, and supply sheets</p>
               </div>
               
               <div className="flex items-center gap-2">
-                <label className="text-xs text-slate-400 font-bold uppercase shrink-0">Select Facility:</label>
+                <label className="text-xs text-slate-500 font-bold uppercase shrink-0">Select Facility:</label>
                 <select
                   value={selectedFacilityId}
                   onChange={(e) => setSelectedFacilityId(e.target.value)}
@@ -1366,18 +1369,18 @@ export default function App() {
                 
                 {/* Doctor Attendance logging */}
                 <div className="glass-panel p-6">
-                  <h3 className="text-sm font-bold text-slate-100 flex items-center gap-2 mb-4">
-                    <UserCheck className="h-4.5 w-4.5 text-primary-500" />
+                  <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2 mb-4">
+                    <UserCheck className="h-4.5 w-4.5 text-teal-600" />
                     Physician Attendance Logger
                   </h3>
                   
                   {Object.keys(attendanceLogs).length === 0 ? (
-                    <p className="text-xs text-slate-400 italic">No doctors configured for this facility.</p>
+                    <p className="text-xs text-slate-500 italic">No doctors configured for this facility.</p>
                   ) : (
                     <div className="space-y-4">
                       {Object.entries(attendanceLogs).map(([docName, currentStatus]) => (
-                        <div key={docName} className="flex items-center justify-between text-xs p-2.5 rounded bg-dark-900/40 border border-slate-800">
-                          <span className="font-semibold text-slate-200">{docName}</span>
+                        <div key={docName} className="flex items-center justify-between text-xs p-2.5 rounded bg-slate-50 border border-slate-200">
+                          <span className="font-semibold text-slate-800">{docName}</span>
                           <div className="flex gap-1.5">
                             {['Present', 'Absent', 'On Leave'].map((statusOption) => (
                               <button
@@ -1390,7 +1393,7 @@ export default function App() {
                                       : statusOption === 'Absent'
                                         ? 'bg-red-600 text-white shadow-md shadow-red-600/20'
                                         : 'bg-amber-600 text-white shadow-md shadow-amber-600/20'
-                                    : 'bg-dark-800 hover:bg-slate-700 text-slate-400 border border-slate-700/50'
+                                    : 'bg-slate-100 hover:bg-slate-200 text-slate-600 border border-slate-200'
                                 }`}
                               >
                                 {statusOption}
@@ -1405,15 +1408,15 @@ export default function App() {
 
                 {/* Stock Level inputs */}
                 <div className="glass-panel p-6">
-                  <h3 className="text-sm font-bold text-slate-100 flex items-center gap-2 mb-4">
-                    <FileText className="h-4.5 w-4.5 text-primary-500" />
+                  <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2 mb-4">
+                    <FileText className="h-4.5 w-4.5 text-teal-600" />
                     Manually Update Stock Levels
                   </h3>
                   <form onSubmit={handleInventorySubmit} className="space-y-4">
                     <div className="grid grid-cols-2 gap-4">
                       {Object.entries(inventoryForm).map(([medName, qty]) => (
                         <div key={medName} className="flex flex-col gap-1">
-                          <label className="text-[10px] text-slate-400 font-bold uppercase truncate">{medName}</label>
+                          <label className="text-[10px] text-slate-500 font-bold uppercase truncate">{medName}</label>
                           <input
                             type="number"
                             value={qty}
@@ -1426,7 +1429,7 @@ export default function App() {
                     </div>
                     <button
                       type="submit"
-                      className="w-full py-2 bg-primary-600 hover:bg-primary-700 text-white font-bold rounded-lg text-xs hover:shadow-primary-500/20 transition-all uppercase tracking-wider"
+                      className="w-full py-2 bg-sky-600 hover:bg-sky-700 text-white font-bold rounded-lg text-xs hover:shadow-sky-500/20 transition-all uppercase tracking-wider"
                     >
                       Update Inventory
                     </button>
@@ -1440,11 +1443,11 @@ export default function App() {
                 
                 {/* Speech Intake */}
                 <div className="glass-panel p-6">
-                  <h3 className="text-sm font-bold text-slate-100 flex items-center gap-2 mb-4">
-                    <Volume2 className="h-4.5 w-4.5 text-primary-500" />
+                  <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2 mb-4">
+                    <Volume2 className="h-4.5 w-4.5 text-teal-600" />
                     Voice Note Intake (AI Translation)
                   </h3>
-                  <p className="text-[11px] text-slate-400 mb-4 leading-relaxed">
+                  <p className="text-[11px] text-slate-505 mb-4 leading-relaxed">
                     Ground staff can report supply requests in regional languages. Gemini/STT will transcribe, translate, and index the report in real-time.
                   </p>
 
@@ -1452,55 +1455,55 @@ export default function App() {
                     <button
                       onClick={() => handleSimulateVoice('hi')}
                       disabled={isRecording}
-                      className="flex-1 py-2 bg-dark-900 hover:bg-slate-800 text-slate-200 border border-slate-700/60 rounded text-[11px] font-bold flex items-center justify-center gap-1.5"
+                      className="flex-1 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 rounded text-[11px] font-bold flex items-center justify-center gap-1.5"
                     >
-                      <Sparkles className="h-3.5 w-3.5 text-rose-400" />
+                      <Sparkles className="h-3.5 w-3.5 text-rose-500" />
                       Simulate Hindi Audio
                     </button>
                     <button
                       onClick={() => handleSimulateVoice('te')}
                       disabled={isRecording}
-                      className="flex-1 py-2 bg-dark-900 hover:bg-slate-800 text-slate-200 border border-slate-700/60 rounded text-[11px] font-bold flex items-center justify-center gap-1.5"
+                      className="flex-1 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 rounded text-[11px] font-bold flex items-center justify-center gap-1.5"
                     >
-                      <Sparkles className="h-3.5 w-3.5 text-blue-400" />
+                      <Sparkles className="h-3.5 w-3.5 text-sky-505" />
                       Simulate Telugu Audio
                     </button>
                   </div>
 
-                  <div className="p-4 bg-dark-900/60 rounded-xl border border-slate-800 flex flex-col items-center justify-center min-h-[140px] text-center">
+                  <div className="p-4 bg-slate-55 rounded-xl border border-slate-200 flex flex-col items-center justify-center min-h-[140px] text-center">
                     {isRecording ? (
                       <div className="space-y-3">
                         <div className="flex gap-1 justify-center">
-                          <span className="w-1.5 h-6 bg-primary-500 rounded animate-[pulse_0.8s_infinite]"></span>
-                          <span className="w-1.5 h-8 bg-primary-500 rounded animate-[pulse_0.8s_infinite_0.2s]"></span>
-                          <span className="w-1.5 h-6 bg-primary-500 rounded animate-[pulse_0.8s_infinite_0.4s]"></span>
+                          <span className="w-1.5 h-6 bg-teal-500 rounded animate-[pulse_0.8s_infinite]"></span>
+                          <span className="w-1.5 h-8 bg-teal-500 rounded animate-[pulse_0.8s_infinite_0.2s]"></span>
+                          <span className="w-1.5 h-6 bg-teal-500 rounded animate-[pulse_0.8s_infinite_0.4s]"></span>
                         </div>
-                        <p className="text-[11px] text-slate-300 font-bold animate-pulse">Recording simulated audio note...</p>
+                        <p className="text-[11px] text-slate-650 font-bold animate-pulse">Recording simulated audio note...</p>
                       </div>
                     ) : voiceResult ? (
                       <div className="w-full text-left space-y-3 text-xs">
                         <div className="flex items-center justify-between">
-                          <span className="font-bold uppercase text-[9px] px-1.5 py-0.5 rounded bg-primary-500/20 text-primary-400">
+                          <span className="font-bold uppercase text-[9px] px-1.5 py-0.5 rounded bg-teal-50 border border-teal-200 text-teal-750">
                             Language: {voiceResult.detected_language === 'hi' ? 'Hindi (IN)' : 'Telugu (IN)'}
                           </span>
-                          <span className="text-[9px] text-slate-400">Confidence: {voiceResult.confidence * 100}%</span>
+                          <span className="text-[9px] text-slate-505">Confidence: {voiceResult.confidence * 100}%</span>
                         </div>
                         <div>
-                          <p className="text-[10px] text-slate-400 font-semibold uppercase">Original Transcript</p>
-                          <p className="text-slate-200 mt-0.5 italic">&ldquo;{voiceResult.original_transcript}&rdquo;</p>
+                          <p className="text-[10px] text-slate-505 font-semibold uppercase">Original Transcript</p>
+                          <p className="text-slate-800 mt-0.5 italic">&ldquo;{voiceResult.original_transcript}&rdquo;</p>
                         </div>
-                        <div className="pt-2 border-t border-slate-800/80">
-                          <p className="text-[10px] text-primary-400 font-semibold uppercase flex items-center gap-1">
+                        <div className="pt-2 border-t border-slate-200">
+                          <p className="text-[10px] text-sky-700 font-semibold uppercase flex items-center gap-1">
                             <Sparkles className="h-3 w-3" />
                             English AI Translation
                           </p>
-                          <p className="text-primary-300 mt-0.5 font-medium leading-relaxed">&ldquo;{voiceResult.translated_text}&rdquo;</p>
+                          <p className="text-slate-850 mt-0.5 font-medium leading-relaxed">&ldquo;{voiceResult.translated_text}&rdquo;</p>
                         </div>
                       </div>
                     ) : (
                       <div className="space-y-2">
-                        <Volume2 className="h-8 w-8 text-slate-500 mx-auto" />
-                        <p className="text-[11px] text-slate-400">Click a regional preset above to trigger translation ingestion pipeline.</p>
+                        <Volume2 className="h-8 w-8 text-slate-400 mx-auto" />
+                        <p className="text-[11px] text-slate-505">Click a regional preset above to trigger translation ingestion pipeline.</p>
                       </div>
                     )}
                   </div>
@@ -1508,15 +1511,15 @@ export default function App() {
 
                 {/* Vision Ingestion */}
                 <div className="glass-panel p-6">
-                  <h3 className="text-sm font-bold text-slate-100 flex items-center gap-2 mb-4">
-                    <Camera className="h-4.5 w-4.5 text-primary-500" />
+                  <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2 mb-4">
+                    <Camera className="h-4.5 w-4.5 text-teal-600" />
                     Vertex AI Vision Upload (Log sheet parsing)
                   </h3>
-                  <p className="text-[11px] text-slate-400 mb-4 leading-relaxed">
+                  <p className="text-[11px] text-slate-505 mb-4 leading-relaxed">
                     Upload handwritten logs or paper invoices. Gemini Multimodal parses and outputs stock items automatically.
                   </p>
                   
-                  <div className="flex flex-col items-center justify-center p-6 border border-dashed border-slate-800 rounded-xl bg-dark-900/40 relative">
+                  <div className="flex flex-col items-center justify-center p-6 border border-dashed border-slate-300 rounded-xl bg-slate-55 relative">
                     <input
                       type="file"
                       accept="image/*"
@@ -1527,23 +1530,23 @@ export default function App() {
                     
                     {isUploadingImage ? (
                       <div className="text-center space-y-3">
-                        <RefreshCw className="h-7 w-7 text-primary-500 animate-spin mx-auto" />
-                        <p className="text-xs text-slate-200">Gemini Vision parsing image...</p>
+                        <RefreshCw className="h-7 w-7 text-teal-650 animate-spin mx-auto" />
+                        <p className="text-xs text-slate-805">Gemini Vision parsing image...</p>
                       </div>
                     ) : manifestResult ? (
                       <div className="w-full text-left space-y-3 text-xs z-20">
-                        <div className="flex items-center justify-between pb-2 border-b border-slate-800">
-                          <span className="font-bold text-slate-200">Parsed Inventory Manifest</span>
-                          <span className="text-[10px] text-emerald-400 flex items-center gap-1">
+                        <div className="flex items-center justify-between pb-2 border-b border-slate-200">
+                          <span className="font-bold text-slate-805">Parsed Inventory Manifest</span>
+                          <span className="text-[10px] text-emerald-600 flex items-center gap-1">
                             <CheckCircle className="h-3 w-3" /> Extracted
                           </span>
                         </div>
                         
                         <div className="space-y-1.5">
                           {Object.entries(manifestResult).map(([item, count]) => (
-                            <div key={item} className="flex justify-between py-1 border-b border-slate-800/40 text-[11px]">
-                              <span className="text-slate-400">{item}</span>
-                              <span className="font-bold text-slate-200">{count} units</span>
+                            <div key={item} className="flex justify-between py-1 border-b border-slate-200/40 text-[11px]">
+                              <span className="text-slate-500">{item}</span>
+                              <span className="font-bold text-slate-800">{count} units</span>
                             </div>
                           ))}
                         </div>
@@ -1558,9 +1561,9 @@ export default function App() {
                       </div>
                     ) : (
                       <div className="text-center space-y-2">
-                        <UploadCloud className="h-8 w-8 text-slate-500 mx-auto" />
-                        <p className="text-xs text-slate-200 font-bold">Drag and drop manifest photo or click here</p>
-                        <p className="text-[10px] text-slate-400">Supports JPEG, PNG log papers (Simulated OCR OCR extraction)</p>
+                        <UploadCloud className="h-8 w-8 text-slate-400 mx-auto" />
+                        <p className="text-xs text-slate-805 font-bold">Drag and drop manifest photo or click here</p>
+                        <p className="text-[10px] text-slate-505">Supports JPEG, PNG log papers (Simulated OCR extraction)</p>
                       </div>
                     )}
                   </div>

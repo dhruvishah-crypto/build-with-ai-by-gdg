@@ -6,26 +6,26 @@
 
 @layer base {
   body {
-    @apply bg-dark-900 text-slate-100 font-sans antialiased overflow-x-hidden;
+    @apply bg-slate-50 text-slate-800 font-sans antialiased overflow-x-hidden;
     background-image: 
-      radial-gradient(at 0% 0%, rgba(20, 184, 166, 0.05) 0px, transparent 50%),
-      radial-gradient(at 100% 0%, rgba(99, 102, 241, 0.05) 0px, transparent 50%),
-      radial-gradient(at 50% 100%, rgba(20, 184, 166, 0.03) 0px, transparent 50%);
+      radial-gradient(at 0% 0%, rgba(2, 132, 199, 0.03) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(20, 184, 166, 0.03) 0px, transparent 50%),
+      radial-gradient(at 50% 100%, rgba(2, 132, 199, 0.02) 0px, transparent 50%);
     background-attachment: fixed;
   }
 }
 
-/* Glassmorphism Classes */
+/* Glassmorphism Classes (Re-purposed to Premium Light Cards) */
 .glass-panel {
-  @apply bg-dark-800/60 backdrop-blur-md border border-slate-700/50 shadow-glass rounded-xl;
+  @apply bg-white border border-slate-200 shadow-sm rounded-xl;
 }
 
 .glass-panel-hover {
-  @apply transition-all duration-300 hover:bg-dark-800/80 hover:border-primary-500/30;
+  @apply transition-all duration-300 hover:shadow-md hover:border-slate-300;
 }
 
 .glass-input {
-  @apply bg-dark-900/60 border border-slate-700 rounded-lg px-4 py-2 text-slate-100 focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 transition-all duration-200;
+  @apply bg-white border border-slate-200 rounded-lg px-4 py-2 text-slate-900 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-all duration-200;
 }
 
 /* Scrollbar styling */
@@ -35,9 +35,9 @@
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-dark-900;
+  @apply bg-slate-100;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-slate-700 rounded-full hover:bg-primary-600;
+  @apply bg-slate-300 rounded-full hover:bg-sky-600;
 }
